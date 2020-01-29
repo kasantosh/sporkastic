@@ -25,13 +25,17 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderLoader(elements.searchRes);
 
-        // 4. Search for recipes
-        await state.search.getResults();
+        try {
+            // 4. Search for recipes
+            await state.search.getResults();
 
-        // 5. Render results on UI
-        clearLoader();
-        searchView.renderResults(state.search.result);
+            // 5. Render results on UI
+            clearLoader();
+            searchView.renderResults(state.search.result);
 
+        } catch (error) {
+            alert('Error! Something went wrong with the search...');
+        }
     }
 }
 
@@ -64,17 +68,30 @@ const controlRecipe = async () => {
         //  Create new Recipe Object
         state.recipe = new Recipe(id);
 
-        // Get recipe data
-        await state.recipe.getRecipe();
+        try {
 
-        // Calculate servings and time
-        state.recipe.calcTime();
-        state.recipe.calcServings();
+            // Get recipe data and parse Ingredient
+            await state.recipe.getRecipe();
+            state.recipe.parseIngredients();
 
-        // Render recipe
-        console.log(state.recipe);
+            // Calculate servings and time
+            state.recipe.calcTime();
+            state.recipe.calcServings();
 
+            // Render recipe
+            console.log(state.recipe);
+
+        } catch (error) {
+            alert('Error processing recipe');
+        }
     }
 }
 
+/*
 window.addEventListener('hashchange', controlRecipe);
+window.addEventListener('load', controlRecipe);
+
+above 2 events can be combined as single event below
+*/
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));

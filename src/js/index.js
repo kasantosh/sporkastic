@@ -114,21 +114,21 @@ const controlList = () => {
     // create new list IF there is none yet
     if (!state.list) state.list = new List();
 
-    // add each ingredient to the list
+    // add each ingredient to the list and UI
     state.recipe.ingredients.forEach(el => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient);
+
         listView.renderItem(item);
     });
 
 }
 
 // Handle delete and update list item events
-
 elements.shopping.addEventListener('click', e => {
     const id = e.target.closest('.shopping__item').dataset.itemid;
-    console.log('button clicked')
+    console.log(id);
 
-    // Handle the delete button in list
+    // Handle the delete button
     if (e.target.matches('.shopping__delete, .shopping__delete *')) {
         // Delete from state
         state.list.deleteItem(id);

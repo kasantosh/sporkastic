@@ -136,6 +136,13 @@ elements.shopping.addEventListener('click', e => {
         // Delete from UI
         listView.deleteItem(id);
     }
+    // Handle the count update
+    else if (e.target.matches('.shopping__count-value')) {
+        const val = parseFloat(e.target.value, 10);
+        if (val >= 0) {
+            state.list.updateCount(id, val);
+        }
+    }
 });
 
 // Handing recipe button clicks (increase (+) or decrease (-))

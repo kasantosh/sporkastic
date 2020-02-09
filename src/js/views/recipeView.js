@@ -52,8 +52,8 @@ export const renderRecipe = (recipe, isLiked) => {
             <use href="img/icons.svg#icon-stopwatch"></use>
         </svg>
         <span class="recipe__info-data recipe__info-data--minutes">${
-          recipe.time
-        }</span>
+    recipe.time
+    }</span>
         <span class="recipe__info-text"> minutes</span>
     </div>
     <div class="recipe__info">
@@ -61,8 +61,8 @@ export const renderRecipe = (recipe, isLiked) => {
             <use href="img/icons.svg#icon-man"></use>
         </svg>
         <span class="recipe__info-data recipe__info-data--people">${
-          recipe.servings
-        }</span>
+    recipe.servings
+    }</span>
         <span class="recipe__info-text">servings</span>
 
         <div class="recipe__info-buttons">
@@ -82,8 +82,8 @@ export const renderRecipe = (recipe, isLiked) => {
     <button class="recipe__love">
         <svg class="header__likes">
             <use href="img/icons.svg#icon-heart${
-              isLiked ? "" : "-outlined"
-            }"></use>
+    isLiked ? '' : '-outlined'
+    }"></use>
         </svg>
     </button>
 </div>
@@ -111,8 +111,8 @@ export const renderRecipe = (recipe, isLiked) => {
     <p class="recipe__directions-text">
         This recipe was carefully designed and tested by
         <span class="recipe__by">${
-          recipe.author
-        }</span>. Please check out directions at their website.
+    recipe.author
+    }</span>. Please check out directions at their website.
     </p>
     <a class="btn-small recipe__btn" href="${recipe.url}" target="_blank">
         <span>Directions</span>
